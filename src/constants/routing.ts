@@ -19,6 +19,7 @@ import {
   WBTC,
   ETH2X_FLI,
   BOO,
+  ZOO,
   SPIRIT,
   WETH9_EXTENDED,
   DAI_OPTIMISM,
@@ -122,7 +123,7 @@ export const COMMON_BASES: ChainCurrencyList = {
   // ],
   // [SupportedChainId.OPTIMISM]: [ExtendedEther.onChain(SupportedChainId.OPTIMISM)],
   // [SupportedChainId.OPTIMISTIC_KOVAN]: [ExtendedEther.onChain(SupportedChainId.OPTIMISTIC_KOVAN)],
-  [SupportedChainId.FANTOM]: [ExtendedEther.onChain(SupportedChainId.FANTOM), BOO, SPIRIT],
+  [SupportedChainId.FANTOM]: [ExtendedEther.onChain(SupportedChainId.FANTOM), BOO, SPIRIT, ZOO],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend

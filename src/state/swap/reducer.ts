@@ -2,7 +2,7 @@
  * @Author: yanghuayun
  * @Date: 2021-07-13 21:07:22
  * @LastEditors: yanghuayun
- * @LastEditTime: 2021-07-19 01:55:34
+ * @LastEditTime: 2021-07-21 00:08:33
  * @Description: file content
  */
 import { createReducer } from '@reduxjs/toolkit'
@@ -52,6 +52,7 @@ export default createReducer<SwapState>(initialState, (builder) =>
       }
     )
     .addCase(selectCurrency, (state, { payload: { currencyId, field } }) => {
+      debugger
       const otherField = field === Field.INPUT ? Field.OUTPUT : Field.INPUT
       console.log(123, otherField)
       if (currencyId === state[otherField].currencyId) {

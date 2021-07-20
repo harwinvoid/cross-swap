@@ -19,6 +19,14 @@ export const BOO = new Token(
   'SpookyToken'
 )
 
+export const ZOO = new Token(
+  SupportedChainId.FANTOM,
+  '0x09e145a1d53c0045f41aeef25d8ff982ae74dd56',
+  0,
+  'ZOO',
+  'Token ZOO'
+)
+
 export const SPIRIT = new Token(
   SupportedChainId.FANTOM,
   '0x5cc61a78f164885776aa610fb0fe1257df78e59b',
@@ -161,7 +169,6 @@ export const WETH9_EXTENDED: { [chainId: number]: Token } = {
 }
 export class ExtendedEther extends Fantom {
   public get wrapped(): Token {
-    debugger
     if (this.chainId in WETH9_EXTENDED) return WETH9_EXTENDED[this.chainId]
     throw new Error('Unsupported chain ID')
   }

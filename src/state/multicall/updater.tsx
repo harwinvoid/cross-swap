@@ -3,13 +3,13 @@ import { useActiveWeb3React } from '../../hooks/web3'
 import { useMulticall2Contract } from '../../hooks/useContract'
 import useDebounce from '../../hooks/useDebounce'
 import chunkArray from '../../utils/chunkArray'
+import { Contract } from 'ethers'
 import { retry, RetryableError } from '../../utils/retry'
 import { useBlockNumber } from '../application/hooks'
 import { AppState } from '../index'
 import { errorFetchingMulticallResults, fetchingMulticallResults, updateMulticallResults } from './actions'
 import { useAppDispatch, useAppSelector } from 'state/hooks'
 import { Call, parseCallKey } from './utils'
-import { UniswapInterfaceMulticall } from 'types/v3'
 
 const DEFAULT_GAS_REQUIRED = 1_000_000
 
@@ -20,13 +20,14 @@ const DEFAULT_GAS_REQUIRED = 1_000_000
  * @param blockNumber block number passed as the block tag in the eth_call
  */
 async function fetchChunk(
-  multicall: UniswapInterfaceMulticall,
+  multicall: Contract,
   chunk: Call[],
   blockNumber: number
 ): Promise<{ success: boolean; returnData: string }[]> {
   console.debug('Fetching chunk', chunk, blockNumber)
   try {
-    const { returnData } = await multicall.callStatic.multicall(
+    const { returnData } = await multicall.callStatic.tryBlockAndAggregate(
+      false,
       chunk.map((obj) => ({
         target: obj.address,
         callData: obj.callData,
@@ -36,6 +37,7 @@ async function fetchChunk(
     )
 
     if (process.env.NODE_ENV === 'development') {
+      //@ts-ignore
       returnData.forEach(({ gasUsed, returnData, success }, i) => {
         if (
           !success &&

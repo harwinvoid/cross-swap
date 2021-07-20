@@ -2,7 +2,7 @@
  * @Author: yanghuayun
  * @Date: 2021-07-19 00:47:27
  * @LastEditors: yanghuayun
- * @LastEditTime: 2021-07-20 22:34:23
+ * @LastEditTime: 2021-07-20 23:14:10
  * @Description: file content
  */
 import invariant from 'tiny-invariant'
@@ -15,7 +15,6 @@ export const WFTM = new Token(250, '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83',
  */
 export class Fantom extends NativeCurrency {
   protected constructor(chainId: number) {
-    debugger
     super(chainId, 18, 'FTM', 'Fantom')
   }
 

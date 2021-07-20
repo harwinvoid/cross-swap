@@ -1,5 +1,4 @@
 import { Trans } from '@lingui/macro'
-import { BigNumber, utils } from 'ethers'
 import { darken } from 'polished'
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
@@ -213,15 +212,7 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 `
 
 export default function Header() {
-  const { account, library } = useActiveWeb3React()
-  const [balance, setBalance] = useState(BigNumber.from(0))
-
-  useEffect(() => {
-    if (!account) return
-    library?.getBalance(account).then((amount) => {
-      setBalance(amount)
-    })
-  }, [account])
+  const { account } = useActiveWeb3React()
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [darkMode] = useDarkModeManager()
@@ -237,9 +228,9 @@ export default function Header() {
         <NetworkCard />
         <HeaderElement>
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
-            {account && balance ? (
+            {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                <Trans>{(+utils.formatEther(balance)).toFixed(2)} FTM</Trans>
+                <Trans>{userEthBalance?.toSignificant(3)} FTM</Trans>
               </BalanceText>
             ) : null}
             <Web3Status />
