@@ -155,5 +155,7 @@
     ]
   },
   "license": "GPL-3.0-or-later",
-  "dependencies": {}
+  "dependencies": {
+    "antd": "^4.16.13"
+  }
 }

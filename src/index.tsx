@@ -2,9 +2,10 @@
  * @Author: yanghuayun
  * @Date: 2021-07-13 21:07:22
  * @LastEditors: yanghuayun
- * @LastEditTime: 2021-07-20 22:46:03
+ * @LastEditTime: 2021-09-05 23:22:24
  * @Description: file content
  */
+// import './index.css'
 import 'inter-ui'
 import '@reach/dialog/styles.css'
 import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core'

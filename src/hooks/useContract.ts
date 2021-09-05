@@ -13,6 +13,7 @@ import ARGENT_WALLET_DETECTOR_ABI from 'abis/argent-wallet-detector.json'
 import ENS_PUBLIC_RESOLVER_ABI from 'abis/ens-public-resolver.json'
 import ENS_ABI from 'abis/ens-registrar.json'
 import ERC20_ABI from 'abis/erc20.json'
+import ERC721_ABI from 'abis/erc721.json'
 import ERC20_BYTES32_ABI from 'abis/erc20_bytes32.json'
 import WETH_ABI from 'abis/weth.json'
 import EIP_2612 from 'abis/eip_2612.json'
@@ -34,7 +35,7 @@ import { useMemo } from 'react'
 import { Quoter, NonfungiblePositionManager } from 'types/v3'
 import { V3Migrator } from 'types/v3/V3Migrator'
 import { getContract } from 'utils'
-import { Erc20, ArgentWalletDetector, EnsPublicResolver, EnsRegistrar, Weth } from '../abis/types'
+import { Erc20, ArgentWalletDetector, EnsPublicResolver, EnsRegistrar, Weth, Erc721 } from '../abis/types'
 import { UNI, WETH9_EXTENDED } from '../constants/tokens'
 import { useActiveWeb3React } from './web3'
 
@@ -67,6 +68,10 @@ export function useV2MigratorContract() {
 
 export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: boolean) {
   return useContract<Erc20>(tokenAddress, ERC20_ABI, withSignerIfPossible)
+}
+
+export function useNFTContrct(tokenAddress?: string, withSignerIfPossible?: boolean) {
+  return useContract<Erc721>(tokenAddress, ERC721_ABI, withSignerIfPossible)
 }
 
 export function useWETHContract(withSignerIfPossible?: boolean) {

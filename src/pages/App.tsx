@@ -26,6 +26,7 @@ import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
 import RemoveLiquidityV3 from './RemoveLiquidity/V3'
 import Swap from './Swap'
+import Rarity from './Rarity'
 import { OpenClaimAddressModalAndRedirectToSwap, RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import Vote from './Vote'
 import VotePage from './Vote/VotePage'
@@ -85,7 +86,7 @@ export default function App() {
             <Polling />
             <TopLevelModals />
             <Switch>
-              <Route exact strict path="/vote" component={Vote} />
+              {/* <Route exact strict path="/vote" component={Vote} />
               <Route exact strict path="/vote/:governorIndex/:id" component={VotePage} />
               <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
               <Route exact strict path="/uni" component={Earn} />
@@ -95,9 +96,12 @@ export default function App() {
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
               <Route exact strict path="/swap" component={Swap} />
 
+              
+
               <Route exact strict path="/pool/v2/find" component={PoolFinder} />
               <Route exact strict path="/pool/v2" component={PoolV2} />
               <Route exact strict path="/pool" component={Pool} />
+
               <Route exact strict path="/pool/:tokenId" component={PositionPage} />
 
               <Route exact strict path="/add/v2/:currencyIdA?/:currencyIdB?" component={RedirectDuplicateTokenIdsV2} />
@@ -122,7 +126,9 @@ export default function App() {
               <Route exact strict path="/migrate/v2/:address" component={MigrateV2Pair} />
 
               <Route exact strict path="/create-proposal" component={CreateProposal} />
-              <Route component={RedirectPathToSwapOnly} />
+              <Route component={RedirectPathToSwapOnly} /> */}
+
+              <Route exact strict path="/rarity" component={Rarity} />
             </Switch>
             <Marginer />
           </BodyWrapper>
